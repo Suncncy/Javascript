@@ -1,140 +1,121 @@
-//这是我的第一个js代码
-        console.log('Hello World')
-//let这个的值可以被修改,const的值不可以被修改
-// let age=30;这是一个变量
-// const age=30这是一个常量，可以定义数组;
-let age=30;
-age=31;
-console.log(age);
-//String,Number,BooLean;nuLL,undefined数据类型
-const username="John";
-const age2=36;
-const isCool=true;
-const rate=4.5;
-const x=null;//其返回的类型为object
-const y=undefined;
-let z;
-console.log(typeof age)
+function add(x,y){//不传参数的时候，括号里面什么也没有
+    // var x=10;
+    // var y=20;
+    //console.log(x+y);
+    return x+y;//返回到函数里面，不能再加任何代码，加了也不会执行
+            //console.log("结果");
+        }
+        //add();可以反复调用,也可以先调用再创建
+       // add(10,50);//传参数
+       var result=add(10,50);
+       console.log(result);
 
-console.log("My name is " + username +"and I am age " + age2);
-//console.log(`My name is ${username} and I am ${age2}`);
-const hello=`My name is ${username} and I am ${age2}`;
-console.log(hello);
-
-const s="Hello World!";
-console.log(s.length);//判断字符串长度
-console.log(s.toUpperCase());//把字符串全部大写；
-console.log(s.toLowerCase());//把字符全部小写；
-console.log(s.substring(0,5).toUpperCase());//substring是切断，0是从第一个字母开始数的，结尾字母是截断点的前一个字母
-console.log(s.split(''));//这个是以最小单位进行分割
-const a="technology, computer, it, code";
-console.log(a.split(", "));//以逗号和空格进行分割；
-
-const numbers = new Array(1,2,3,4,5);
-//const fruits = ["apples","oranges","pears",10,true];
-const fruits = ["apples","oranges","pears"];
-fruits[3]="grapes";
-fruits.push("mangos");//这是在尾部进行补充
-fruits.unshift("strawberries");//这是在头部进行补充
-fruits.pop();//删除尾部的元素
-//console.log(fruits[1]);这个输出的还是oranges，代表索引是从0开始的
-console.log(fruits);
-console.log(numbers);
-console.log(Array.isArray(fruits));//这是判断是不是数组；
-console.log(Array.isArray('hello'));//这个报字符串就会false
-console.log(fruits.indexOf("oranges"));//这个是查找，进行索引
-
-const person={
-    firstName:"John",
-    lastName: "D.O.",
-    age:30,
-    hobbies:["music","movies","sports"],
-    address:{
-        street:"50 main st",
-        city:"Boston",
-        stast:"MA",
+       
+ var user={//创造一个对象user
+    age : 13,
+    name:"suncncy",
+    jobs:["itbaizhan","sxt"],
+    flag:true,
+    getName:function(){
+        console.log("D.O.")
     },
-};
-console.log(person);//这是全部访问
-console.log(person.firstName,person.lastName);//这是访问一些详细的
-console.log(person.hobbies[1]);
-console.log(person.address.city);
-const {
-    firstName,
-    lastName,
-    address:{ city },
-} = person;
-console.log(city);//就直接进行访问了
-person.emall="666@qq.com";//添加新的属性
-console.log(person);
+    container:{
+        frontEnd:"WEB前端",
+        backEnd:["python","java"]
 
-const todos = [
-    {
-        id:1,
-        text:"Take out trash",
-        isCompleted:true,
-    },
-    {
-        id:2,
-        text:"Meeting with boss",
-        isCompleted:true,
-    },
-    {
-        id:3,
-        text:"Dentist appt",
-        isCompleted:false,
-    },
-];
-console.log(todos);
-console.log(todos[1].text);//详细进行访问
-const todoJSON = JSON.stringify(todos)
-console.log(todoJSON);//输出JSON格式
+    }
+ }    
+//  function getName(){
 
-const x2 =20;
-const y2=5;
-
-if (x2===10||y2>3){//三等号是进行严格判断的,二等号不是严格控制的,||是或者的意思，&&是并且的意思
-    console.log("x2 is 10 y2=5");
-}else if(x2>10){
-console.log("x2 is greater than 10")
+//  }  这是处在外部的函数
+console.log(user.name);//对象的读取方式
+for(var i=0;i<user.jobs.length;i++){//一层一层剥开
+    console.log(user.jobs[i]);
 }
-else{
-    console.log("x2 is less than 10");
+user.getName();
+console.log(user.container.frontEnd);//链式调用
+for(var i=0;i<user.container.backEnd.length;i++){
+    console.log(user.container.backEnd[i]);
 }
+ 
 
-const x3=10;
-//const color=x>10?"red":"blue";
-const color="green"
-console.log(color);
-
-switch(color){
-    case"red":
-    console.log("color is red");
-    break;
-     case"blue":
-    console.log("color is blue");
-    break;
-    default:
-    console.log("color is not red or blue");
+var number=-100;
+console.log(number);
+console.log(Math.abs(-5));//abs是绝对值的意思
+console.log(Math.max(10,25,89,63,78));//最大值
+console.log(Math.min(10,25,89,63,78));//最小值
+console.log(Math.floor(5.6));//向下取整，舍弃尾部
+console.log(Math.ceil(5.6));//向上取整，直接进一，10.0的话，直接还是原来的
+console.log(Math.random());//这个的大小范围是大于0，小于1；
+function  getRandomArbitrary(min,max){
+    var result=Math.random()*(max-min)+min;
+    result=Math.floor(result);//进行取整
+    console.log(result);
 }
+getRandomArbitrary(10,20);
 
-for(let i=0;i<todos.length;i++){
-    //console.log(i)
-    //console.log(`For Loop Number:${i}`);
-    console.log(todos[i].text);
+
+console.log(Date.now());//当前时间距离1970.1.1 8点的毫秒数
+console.log(new Date());//当前的标准时间
+console.log(new Date(1771844026772).getDate());//显示的是今天是几号
+console.log(new Date(1771844026772).getDay());//显示的是周几；
+console.log(new Date(1771844026772).getFullYear());//显示的是年份；
+console.log(new Date(1771844026772).getMonth());//显示的是月份，但是最后要加一；
+//将month改成hours，Millseconds，Minutes，Seconds就会是小时，毫秒，分钟，和秒
+var year=new Date(1771844026772).getFullYear();
+var month=new Date(1771844026772).getMonth()+1;
+var day=new Date(1771844026772).getDate();
+console.log(year+"-"+month+"-"+day);
+function leftDays(){//距离还有多少天过年的函数
+    var today=new Date();
+    var endYear=new Date(today.getFullYear(),11,31,23,59,59,999);
+     var msPerDay=24*60*60*1000;
+    var result=(endYear.getTime()-today.getTime())/msPerDay;
+    console.log(Math.floor(result));
 }
-let i=0;
-while(i<10){
-    console.log(`While Loop Number:${i}`);
-    i++;  
-}
-for(let todo of todos){
-    console.log(todo);
-}
+leftDays();
+
+console.log(document);
+
+//获取元素
+//var divs=document.getElementsByTagName("div"); //这是根据标签,读取全部元素
+var divs=document.getElementsByTagName("div")[1]//读取第二个元素
+//console.log(divs);
+divs.innerHTML="Hello World";//将第二个div盒子里面的元素进行更改；
+
+//var text=document.getElementsByClassName("text")这是加一个class里面，读取元素，也可以括号里面加多个类，中间用空格进行分开
+var text=document.getElementsByClassName("text")[0];//进行单独读取
+//console.log(text);
+text.innerHTML="hi";//对元素进行内部修改
+
+var name=document.getElementsByName("login");
+console.log(name);//使用率极低
+
+var root=document.getElementById("root");//直接读取到一个，因为id是唯一的
+console.log(root);
+root.innerHTML="呵呵呵";//进行更改
+
+var nav=document.querySelector(".nav");//class用.,id用#，这里的nav不是仅仅一个名字，而是一个选择器
+console.log(nav);//只能打印一个
+
+//var navs=document.querySelectorAll(".nav");//读取全部的
+var navs=document.querySelectorAll(".nav")[1];//读取一个的
+console.log(navs);
 
 
-
-
-
+//创建元素
+var text1=document.createElement("p");//在元素控制台上，创建一个新的p标签
+var content=document.createTextNode("我是文本");
+var id=document.createAttribute("id");//创建属性
+id.value="root1";
+//console.log(content);在元素台上，展示我是文本的字样
+//console.log(text1);
+text1.appendChild(content);//作用是将文字放进p标签之中
+text1.setAttributeNode(id);//将id也加进p标签里面，这个只作用于属性标签的添加
+console.log(text1);
+//console.log(id);
+var container=document.getElementById("container");//在元素台上打印出来
+//console.log(container);
+container.appendChild(text1);//这个会在页面展示，在HTML里面加
 
 

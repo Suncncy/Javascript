@@ -1,59 +1,38 @@
-function clickHandle(){
-    console.log("点击了按钮");//点击按钮时，会在console上面显示这一行里面的文字
-}
-//这是HTML事件：缺点，和js未分开
-console.log("--------------");
 var btn=document.getElementById("btn");
-btn.onclick=function(){
-    console.log("点击了");//会在console上面显示这一行里面的文字 
+//Event事件对象，其实就是参数
+btn.onclick=function(event){
+    //console.log(event.target);console上出现你此时的操作
+    event.target.innerHTML="点击之后";//将“按钮”这两个字换成你想要的字
+    console.log(event.type);//console上面显示的是，你所干的事的属性
 }
-//这是DOMO事件，优点HTML和js是分开的,无法同时添加多个
-console.log("--------------");
-var btn2=document.getElementById("btn2");
-btn2.addEventListener("click",function(){
-    console.log("再一次点击");//会在console上面显示这一行里面的文字 
-    }
-)
-//DOM2事件：可以添加多个事件
+var it=document.getElementById("it");
+it.onclick=function(event){
+    event.preventDefault();//点击了链接，不会跳转到网页
+    console.log("点击了A");
+}
+var root=document.getElementById("root");
+var box=document.getElementById("box");
+root.onclick=function(){
+console.log("root");
+}
+box.onclick =function(e){
+    e.stopPropagation();//鼠标点击内部盒子时候，不会连着外部盒子的root也显示了
+console.log("box");
+}
+//------------------------------------------------------
+var username=document.getElementById("username");
+var password=document.getElementById("password");
+username.onkeydown=function(e){
+    console.log("按下了");
+    //console.log(e.target.value);//value属性就是输入框的数据，在按下键盘的时候显示
+}
+username.onkeyup=function(e){
+    console.log(e.target.value);//在抬起键盘的时候显示
+}
+username.onkeypress=function(e){
+    console.log("keypress");//除了按下数字和字母有显示的内容，剩下的都无显示的内容
 
-var btn3=document.getElementById("btn3");
-var btn4=document.getElementById("btn4");
-var btn5=document.getElementById("btn5");
-var btn6=document.getElementById("btn6");
-var btn7=document.getElementById("btn7");
-var btn8=document.getElementById("btn8");
-var btn9=document.getElementById("btn9");
-var btn10=document.getElementById("btn10");
-var btn11=document.getElementById("btn11");
-btn3.onclick=function(){
-    console.log("单击事件");//单击才会显示
 }
-btn4.ondblclick=function(){
-    console.log("双击事件");//双击才会显示
+password.onkeyup=function(e){
+    console.log(e.keyCode);//会显示键盘上每个符号所对应的ASCMALL值，回车是13
 }
-btn5.onmousedown=function(){
-    console.log("鼠标按下");//鼠标按下才会显示
-}
-btn6.onmouseup=function(){
-    console.log("鼠标抬起");//鼠标抬起才会显示
-}
-btn7.onmousemove= function(){
-console.log("鼠标移动");//鼠标在小盒子上面移动就会显示文字
-}
-btn8.onmouseenter=function(){
-    console.log("鼠标进入了");//鼠标进入盒子才会显示，但是进入子节点就不会再次显示字体
-}
-btn9.onmouseleave=function(){
-    console.log("鼠标离开了");//鼠标离开盒子才会显示，但是进入子节点就不会再次显示字体
-}
-btn10.onmouseover=function(){
-    console.log("鼠标进入了");//鼠标进入盒子才会显示，进入子父级元素都会分别实现显示字体的效果
-}
-
-btn11.onmouseout=function(){
-    console.log("鼠标离开了");//鼠标离开盒子才会显示，进入子父级元素都会分别实现显示字体的效果
-}
-
-
-
-

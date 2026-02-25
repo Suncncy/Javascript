@@ -1,45 +1,33 @@
-var list=document.getElementById("list");
-// list.onclick=function(){
-//     console.log("点击了");//给父元素设置，点击子元素也会有影响
+// window.onscroll=function(){
+//     console.log("页面滚动了");//在页面滚动时，会打印上面文字
 // }
-list.addEventListener("click",function(e){
-    if(e.target.tagName ==="LI"){//或者括号里面（e.target.tagName ==="LI"换成（e.target.tagName。toLowerCase() ==="li"
-        console.log("点击了li标签");//这是DOM2的方法，也是点击li元素，就会显示字体
-        console.log(e.target.innerHTML);//这个是点击li元素，会显示li元素里面的内容
-
-    }
-})
-console.log("-------------------------");
- var timer=setTimeout(function(){
-    console.log("大家好，延迟3秒之后执行");
-},3000)//延时打印
-clearTimeout(timer)//这是取消定时器
-var name="iwen";
-var user={
-    name:"itbaizhan",
-    getName:function(){
-        // var that=this;
-        setTimeout(function(){
-            console.log(this.name);//在setTimeout函数里面，this指的是全局变量的name了,就是iwen，将里面的this用that代换，那么打出来就是itbaizhan了
-        },1000);
-        //console.log(this.name);//这个打印出来的是itbaizhan，this永远指向当前调用者
+function debounce(fn,delay){
+    var timer=null;
+    return function(){
+        if(timer){
+            clearTimeout(timer)
+        }
+        timer=setTimeout(fn,delay)
     }
 }
-user.getName();
-console.log("--------------------------------")
-var i=0;
-setInterval(function(){//每间隔一秒打印一次
-    i++;
-    console.log(i);
-},1000)
-console.log("----------------");
-var someDiv=document.getElementById("someDiv");
-var opacity=1;
-var fader=setInterval(function(){//这个是每间隔一段时间
-    if(opacity>0){
-        opacity-= 0.05
-    someDiv.style.opacity=opacity;
-    }else{
-        clearInterval(fader);
+function throttle(fn,delay){//节流代码
+    var valid=true;
+    return function(){
+        if(!valid){
+            return false;
+        }
+        valid=false;
+        setTimeout(function(){
+            fn();
+            valid=true;
+        },delay)
     }
-},60)
+}
+window.onscroll=throttle(scrollHandle,200);
+window.onscroll=debounce(scrollHandle,200);//在一段时间内，只让事件执行一次
+function scrollHandle(){///防抖的函数
+    var scrollTop=document.documentElement.scrollTop;
+    console.log('滚动条位置'+scrollTop);//显示滚动条距离页面顶端的位置
+    console.log("页面滚动了");//和上面的一样效果
+}
+console.log("-------------------------")

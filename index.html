@@ -6,16 +6,21 @@
     <title>Document</title>
     
 </head>
+<style>
+    #someDiv{
+        width:200px;
+        height:200px;
+        background-color: #04a4df;
+        opacity: 1;/*透明度*/
+    }
+</style>
 
 <body>
-    <input type="text" id="username">
-    <input type="text" id="password">
-    <form   action="服务器地址"  id="myForm" onsubmit="submitHandle">
-        <input type="text" name="username">
-        <button id="resetBtn">重置</button>
-        <button>提交</button>
-    </form>
-
+    <ul id="list">
+        <li>列表1</li>
+         <li>列表2</li>
+    </ul>
+    <div id="someDiv"></div>
     <script src="index.js"></script>
     
 </body>
